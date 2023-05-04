@@ -27,13 +27,15 @@ body{
     display: flex;
     justify-content: space-between;
     margin-bottom: 75px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
 }
 
 .date-container{
     text-align: right;
 }
 
-form{
+label{
     width: 100%;
     display: flex;
     align-items: center;
@@ -47,6 +49,7 @@ form{
     border: 1px solid black;
     border-radius: 5px;
     padding: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .add-item{
@@ -57,23 +60,42 @@ form{
     font-weight: bold;
     padding: 10px;
     background-color: #16c5b9;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
 }
 
 .add-item:hover{
     background-color: #08aa9f;
 }
+    
 
-
-.list-container {
+.list-container{
     margin-top: 50px;
+    width: 100%;
+    overflow-y: scroll ;
+    scroll-behavior: smooth;
 }
 
-.list-container ul li {
-    list-style: none;
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #16c5b9;
+::-webkit-scrollbar {
+    display: none;
+} 
+
+.list-container li{
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    color:  #16c5b9;
+    margin-bottom: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    user-select: none;
+}
+
+.done{
+    text-decoration: line-through;
+    color: grey !important;
+    
 }
