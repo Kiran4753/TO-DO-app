@@ -31,8 +31,32 @@ body{
     border-bottom: 1px solid black;
 }
 
+.name-container{
+    width: 60%;
+}
+
+.name-container input{
+    display: block;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    font-size: 35px;
+    color: #16c5b9;
+}
+
+.name-container input::placeholder{
+    font-weight: bold;
+    font-size: 35px;
+    color: #16c5b9;
+}
+
 .date-container{
     text-align: right;
+}
+
+.date-container h4{
+    margin-top: 7px;
 }
 
 label{

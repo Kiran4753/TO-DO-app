@@ -2,11 +2,33 @@ const todoBox = document.querySelector('.list-container');
 const addBtn = document.querySelector('.add-item');
 const inputBox = document.querySelector('.item-input');
 
-addBtn.addEventListener('click', function(event){
-    event.preventDefault()
-    addTodo(inputBox.value);
-    inputBox.value = '';
+//const nameInput = document.querySelector('#name-input');
 
+window.addEventListener('load', function(){
+    //get user name
+    const nameInput = document.querySelector('#name-input');
+    const userName = localStorage.getItem('username') || '';
+    nameInput.value = userName;
+
+    nameInput.addEventListener('change', e =>{
+        localStorage.setItem('username', e.target.value)
+    });
+
+    //get to do items
+    toDos = JSON.parse(localStorage.getItem('to-dos')) || [];
+    inputBox.value = toDos;
+
+    todoBox.localStorage.setItem('to-dos', toDos);
+    
+
+
+})
+
+addBtn.addEventListener('click', function(){
+    if(inputBox.value !== ''){
+        addTodo(inputBox.value);
+        inputBox.value = '';
+    }
 })
 
 const addTodo = item =>{
