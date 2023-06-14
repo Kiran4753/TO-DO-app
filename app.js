@@ -4,8 +4,6 @@ const userInput = document.querySelector('.item-input')
 const getDay = document.querySelector('#get-day');
 const getDate = document.querySelector('#get-date');
 
-//add local storage
-
 
 
 //get user name
@@ -18,32 +16,31 @@ nameInput.addEventListener('change', e => {
 });
 
 let ls = localStorage.getItem('to-do');
-let todo = ls? JSON.parse(ls):[];
+let todo = ls ? JSON.parse(ls) : [];
 
-addBtn.addEventListener('click', function(){
+addBtn.addEventListener('click', function () {
     let inputData = userInput.value;
     todo.push(inputData);
     localStorage.setItem('to-do', JSON.stringify(todo));
     location.reload()
 });
 
-todo.map((data, index)=>{
-    todoBox.innerHTML += `
-    <li onclick='done(${index})'>
-    ${data}
-    <img src="./images/delete.svg" alt="" width="20px" onclick='del(${index})'>
-    </li>
-    `
+todo.map((data, index) => {
+
+
+    const li = document.createElement('li');
+    li.innerHTML = `${data} <img src="./images/delete.svg" alt="" width="20px" onclick='del(${index})'>`;
+    li.addEventListener('click', function () {
+        this.classList.toggle('done')
+    });
+    li.querySelector('img').addEventListener('click', function () {
+        li.remove();
+    })
+    todoBox.appendChild(li)
 });
 
-function done(data) {
-    console.log(todo[i]);
-    let text = todo[i]
-    text.style.color='red'
-}
-
-function del(e){
-    let deleted = todo.filter((data, index)=>{
+function del(e) {
+    let deleted = todo.filter((data, index) => {
         return index !== e
     });
     localStorage.setItem('to-do', JSON.stringify(deleted));
@@ -97,15 +94,3 @@ function formatDate(x) {
     var year = x.getFullYear();
     return date + '/' + month + '/' + year
 }
-
-
-
-// const li = document.createElement('li');
-// li.innerHTML = `${item} <img src="./images/delete.svg" alt="" width="20px">`;
-// li.addEventListener('click', function(){
-//     this.classList.toggle('done')
-// });
-// li.querySelector('img').addEventListener('click', function(){
-//     li.remove();
-// })
-// todoBox.appendChild(li)
